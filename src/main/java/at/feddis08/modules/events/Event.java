@@ -1,4 +1,4 @@
-package at.feddis08.modules;
+package at.feddis08.modules.events;
 
 import at.feddis08.world.entities.Entity;
 

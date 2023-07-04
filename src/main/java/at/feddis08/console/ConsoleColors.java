@@ -1,4 +1,4 @@
-package at.feddis08;
+package at.feddis08.console;
 
 public class ConsoleColors {
     // Reset

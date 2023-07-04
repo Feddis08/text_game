@@ -5,11 +5,10 @@ import at.feddis08.world.entities.Entity;
 
 import java.util.ArrayList;
 
-public class Entity_look_event extends Event{
-    public Room room;
-    public ArrayList<String> response = new ArrayList<>();
-    public Entity_look_event(Entity entity, Room room) {
-        super("entity_look_event", entity);
-        this.room = room;
+public class Entity_say_event extends Event{
+    public String message;
+    public Entity_say_event(Entity entity, String message) {
+        super("entity_say_event", entity);
+        this.message = message;
     }
 }
