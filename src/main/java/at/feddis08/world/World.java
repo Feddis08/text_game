@@ -4,7 +4,7 @@ import at.feddis08.modules.GameObject;
 import at.feddis08.world.entities.Door;
 import at.feddis08.world.entities.Entity;
 import at.feddis08.world.living.Mouse;
-import at.feddis08.world.living.Player;
+import at.feddis08.world.living.Human;
 
 import java.util.ArrayList;
 
@@ -12,10 +12,10 @@ public class World {
     public ArrayList<Room> rooms = new ArrayList<>();
     public ArrayList<Entity> entities = new ArrayList<>();
 
-    public Player add_player(String name) {
-        Player player = new Player(name, 1);
-        this.entities.add(player);
-        return player;
+    public Human add_player(String name) {
+        Human human = new Human(name, 1);
+        this.entities.add(human);
+        return human;
     }
 
     public void tick() {
@@ -25,15 +25,33 @@ public class World {
     }
 
     public void create() {
-        Door door = new Door("door_name", "A small wooden door that connects Room2 and the Spawn", "Room_name", "Spawn");
+        //
+        Door door = new Door("F-C_gate", "A connection between the small path and the cave entry", "Forest Path", "Cave entry");
 
-        Room room2 = new Room("Room_name", "room_description");
+        Room room2 = new Room("Forest Path", "A small path that goes deep into the Forest. There is only one way to go.");
         room2.add_object(door);
         this.rooms.add(room2);
 
-        Room spawn = new Room("Spawn", "the spawn room");
-        spawn.add_object(door);
+        Door door2 = new Door("C-P_gate", "A connection between the cave entry and the path end.", "Cave entry", "Path end");
+        Door door3 = new Door("C-C_gate", "A connection between the cave entry and the cave.", "Cave entry", "Cave");
+
+        Room spawn = new Room("Cave entry", "The small path splits in two. I can go into a cave or remain on track.");
+        spawn.add_object(door2);
+        spawn.add_object(door3);
         this.rooms.add(spawn);
+        //
+
+        Room r3 = new Room("Path end", "There ends the small Path. I can go back.");
+        r3.add_object(door2);
+        Mouse m = new Mouse("Rat", 0);
+        r3.add_object(m);
+        this.rooms.add(r3);
+
+        Room r4 = new Room("Cave", "Pass the entry of the forest cave. It's really dark and it's hard to see anything. The cave looks deep. Also you can hear something.");
+        r4.add_object(door3);
+        Mouse m2 = new Mouse("Rat", 0);
+        r4.add_object(m);
+        this.rooms.add(r4);
 
 
     }

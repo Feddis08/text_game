@@ -5,35 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21c3cd77-268b-4769-b03a-0df4178c769c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/Console.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/Gameloop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/InputParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/console/ConsoleColors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/modules/GameObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/modules/Inventory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/modules/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/modules/events/Entity_enter_door_event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/modules/events/Entity_look_event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/modules/events/Entity_looks_at_object_event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/modules/events/Entity_move_event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/modules/events/Entity_say_event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/modules/events/Entity_take_damage_event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/modules/events/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/world/Room.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/world/World.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/world/entities/Door.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/world/entities/Entity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/world/living/MainPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/world/living/Mouse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/world/living/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/world/living/GiantRat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/feddis08/Gameloop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/Gameloop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/feddis08/InputParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/InputParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/feddis08/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/feddis08/world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/world/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/feddis08/world/entities/Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/world/entities/Door.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/feddis08/world/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/world/entities/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/feddis08/world/living/MainPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/world/living/MainHuman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/feddis08/world/living/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/world/living/Mouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/feddis08/world/living/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/feddis08/world/living/Human.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

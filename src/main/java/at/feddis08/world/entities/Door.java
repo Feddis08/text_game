@@ -5,7 +5,7 @@ import at.feddis08.modules.events.Entity_enter_door_event;
 import at.feddis08.modules.events.Entity_looks_at_object_event;
 import at.feddis08.modules.events.Event;
 import at.feddis08.world.Room;
-import at.feddis08.world.living.Player;
+import at.feddis08.world.living.Human;
 
 public class Door extends Entity{
 
@@ -34,7 +34,7 @@ public class Door extends Entity{
         }else{
             entity.move_to_room(room_name1);
         }
-        if (entity instanceof Player p){
+        if (entity instanceof Human p){
             p.send_message_to_player("You went into the door. Explore the new room!");
         }
     }

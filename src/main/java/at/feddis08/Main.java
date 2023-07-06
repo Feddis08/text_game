@@ -2,7 +2,7 @@ package at.feddis08;
 
 import at.feddis08.console.ConsoleColors;
 import at.feddis08.world.World;
-import at.feddis08.world.living.MainPlayer;
+import at.feddis08.world.living.MainHuman;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ public class Main {
     public static boolean load_from_save = false;
     public static World world = new World();
 
-    public static MainPlayer player;
+    public static MainHuman player;
 
 
     public static void main(String[] args) {
@@ -34,10 +34,10 @@ public class Main {
         }
 
     }
-    public static MainPlayer add_main_player(String name) {
-        MainPlayer player = new MainPlayer(name, 1);
+    public static MainHuman add_main_player(String name) {
+        MainHuman player = new MainHuman(name, 1);
         world.entities.add(player);
-        world.rooms.get(0).add_object(player);
+        world.rooms.get(2).add_object(player);
         return player;
     }
 

@@ -9,7 +9,7 @@ import at.feddis08.modules.events.Entity_looks_at_object_event;
 import at.feddis08.modules.events.Entity_move_event;
 import at.feddis08.modules.events.Event;
 import at.feddis08.world.Room;
-import at.feddis08.world.living.Player;
+import at.feddis08.world.living.Human;
 
 import java.util.ArrayList;
 
@@ -37,7 +37,7 @@ public class Entity extends GameObject {
     public String entity_look_response;
     public int punch_delay_ticks;
     public int punch_delayed;
-    public boolean resting = false;
+    public boolean resting;
     public Entity(String name, int age){
         super();
         this.name = name;
@@ -62,8 +62,8 @@ public class Entity extends GameObject {
         this.win = false;
         this.entity_looks_at_response = "a thing called " + name;
         this.entity_look_response = "a being";
-        this.punch_delay_ticks = 10;
-        this.punch_delayed = 10;
+        this.punch_delay_ticks = 100;
+        this.punch_delayed = 100;
         this.resting = false;
     }
 
@@ -72,27 +72,26 @@ public class Entity extends GameObject {
         this.age++;
     }
     public void regenerate(){
-        if (this.health != max_health){
-            if (!battle_mode || resting){
-                if (stamina > 0){
-                    stamina -= 1;
+        if (!battle_mode || resting) {
+            if (this.health != max_health){
+                if (stamina >= 0.5 && food >= 0.5){
+                    stamina -= 0.5;
+                    food -= 0.5;
                     health += 1;
                 }
             }
-        }
-        if (stamina != max_stamina){
-            if (!battle_mode || resting) {
-                if (food > 0) {
+            if (stamina != max_stamina){
+                if (food >= 1) {
                     food -= 1;
                     stamina += 1;
                 }
             }
         }
-        if (food == 0){
-                health -= 0.5;
-        }
         if (health <= 0){
             die();
+        }
+        if (food == 0){
+            health -= 0.5;
         }
     }
     public void die(){
@@ -101,8 +100,23 @@ public class Entity extends GameObject {
         battle_update();
     }
     public void rearainge_stats(){
-        power = (stamina * 2) * health / 1000;
+        power = ((stamina * 2) * food * (health * 3)) / 100000;
         if (punch_delayed != punch_delay_ticks){
+            if (punch_delayed == 0){
+                if (battle_mode) battle_update();
+            }
+            if (punch_delayed == punch_delay_ticks/4){
+                if (battle_mode) battle_update();
+            }
+            if (punch_delayed == punch_delay_ticks/2){
+                if (battle_mode) battle_update();
+            }
+            if (punch_delayed == punch_delay_ticks/4 * 3){
+                if (battle_mode) battle_update();
+            }
+            if (punch_delayed == punch_delay_ticks){
+                if (battle_mode) battle_update();
+            }
             punch_delayed++;
         }
     }
@@ -136,7 +150,7 @@ public class Entity extends GameObject {
                 r2.add_object(this);
             }
         }else{
-            if (this instanceof Player p){
+            if (this instanceof Human p){
                 p.send_message_to_player("I first have to stop resting.");
             }
         }
@@ -173,25 +187,45 @@ public class Entity extends GameObject {
     }
 
     public void handle_win(){
-        battle_update();
         win = false;
         battle_mode = false;
         enemy = null;
     }
     public void punch(Entity e){
-        if (punch_delayed == punch_delay_ticks){
-            punch_delayed = punch_delay_ticks/2;
-            this.stamina = stamina - power/20;
+        if (can_punch()){
+            punch_delayed = 0;
+            this.stamina = stamina - (power/2);
             this.latest_attack = "punch";
             e.take_damage(this);
         }
     }
-    public void take_damage(Entity e){
-        if (e.latest_attack.equals("punch")){
-            health = health - e.power;
-            damage_taken = e.power;
-            battle_update();
+    public void add_food(int amount){
+        if (food <= max_food){
+            int x = food + amount;
+            if (x >= max_food){
+                food = max_food;
+            }else{
+                food = x;
+            }
         }
+    }
+    public void take_damage(Entity e){
+        int damage = 0;
+        if (e.latest_attack.equals("punch")){
+            damage = e.power;
+            health = health - damage;
+        }
+        if (e.latest_attack.equals("bite")){
+            damage = (e.power * 200 / 100) + e.power;
+            health = health - damage;
+            int food_loss = (health / enemy.health) ;
+            if (food >= food_loss)
+                food = food - food_loss;
+            if (food_loss > 0)
+                health = health - enemy.power / food_loss;
+        }
+        damage_taken = damage;
+        battle_update();
     }
     public void battle_update(){
 
@@ -212,8 +246,11 @@ public class Entity extends GameObject {
         }else if(action.equals("rest")){
             rest();
             this.battle_update();
-        }else if (this instanceof Player p){
+        }else if (this instanceof Human p){
             p.send_message_to_player("Can't attack while resting!");
         }
+    }
+    public boolean can_punch(){
+        return (punch_delayed == punch_delay_ticks);
     }
 }

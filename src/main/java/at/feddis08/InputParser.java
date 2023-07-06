@@ -4,16 +4,16 @@ import at.feddis08.console.ConsoleColors;
 import at.feddis08.modules.events.*;
 import at.feddis08.world.entities.Door;
 import at.feddis08.world.entities.Entity;
-import at.feddis08.world.living.MainPlayer;
+import at.feddis08.world.living.MainHuman;
 
 public class InputParser {
-    public MainPlayer mainPlayer;
-    public InputParser(MainPlayer mainPlayer){
+    public MainHuman mainPlayer;
+    public InputParser(MainHuman mainPlayer){
         this.mainPlayer = mainPlayer;
     }
     public void parse(String input){
         String[] words = input.split("\\s+");
-        if (words[0].equals("look")){
+        if (words[0].equals("look") || words[0].equals("l")){
 
             if (words.length == 1){
                 Entity_look_event e = new Entity_look_event(mainPlayer, Main.world.get_room_by_gameobject_id(mainPlayer.id));
@@ -69,7 +69,7 @@ public class InputParser {
                 mainPlayer.draw_battle_screen();
             }
         }
-        if (words[0].equals("enter")){
+        if (words[0].equals("enter") || words[0].equals("go")){
             if (words.length == 2){
                 Entity_enter_door_event e = new Entity_enter_door_event(mainPlayer, (Door) Main.world.get_room_by_gameobject_id(mainPlayer.id).get_entity_by_name(words[1]));
                 Entity_enter_door_event e2 = (Entity_enter_door_event) Main.world.get_room_by_gameobject_id(mainPlayer.id).event_handler(e);

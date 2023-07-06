@@ -7,11 +7,10 @@ public class Gameloop {
     public static void start(){
         t = new Thread(() -> {
             while(true){
-                //Console.log(tick_count + " aa");
                 loop();
                 tick_count++;
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
