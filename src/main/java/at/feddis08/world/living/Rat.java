@@ -1,14 +1,13 @@
 package at.feddis08.world.living;
 
-import at.feddis08.Console;
 import at.feddis08.Main;
 import at.feddis08.modules.events.*;
 import at.feddis08.world.entities.Entity;
+import at.feddis08.world.items.Rat_flesh;
 
 import java.util.Objects;
-import java.util.concurrent.ConcurrentSkipListSet;
 
-public class Mouse extends Entity {
+public class Rat extends Entity {
 
     public boolean in_input_event = false;
 
@@ -16,7 +15,7 @@ public class Mouse extends Entity {
     public int bite_delay_ticks = 160;
     public int bite_delay = 160;
 
-    public Mouse(String name, int age) {
+    public Rat(String name, int age) {
         super(name, age);
         this.health = 55;
         this.max_health = 55;
@@ -24,9 +23,11 @@ public class Mouse extends Entity {
         this.max_stamina = 18;
         this.food = 55;
         this.max_food = 55;
-        this.entity_look_response = "A Mouse";
-        this.entity_looks_at_response = "A Mouse that is ready to fight!";
+        this.entity_look_response = "A Rat";
+        this.entity_looks_at_response = "A Rat that is ready to fight!";
         this.battle_actions.add("bite");
+        inventory.size = 4;
+        inventory.add_item(new Rat_flesh("Rat flesh"));
     }
 
     @Override
@@ -121,7 +122,7 @@ public class Mouse extends Entity {
     public void start_battle(Entity e) {
 
         super.start_battle(e);
-        this.entity_looks_at_response = "Mouse that is in a battle with " + enemy.name + "!";
+        this.entity_looks_at_response = "Rat that is in a battle with " + enemy.name + "!";
     }
 
     @Override

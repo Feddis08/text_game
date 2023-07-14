@@ -4,12 +4,15 @@ import at.feddis08.Console;
 import at.feddis08.Main;
 import at.feddis08.modules.GameObject;
 import at.feddis08.modules.Inventory;
+import at.feddis08.modules.Item;
 import at.feddis08.modules.events.Entity_look_event;
 import at.feddis08.modules.events.Entity_looks_at_object_event;
 import at.feddis08.modules.events.Entity_move_event;
 import at.feddis08.modules.events.Event;
 import at.feddis08.world.Room;
+import at.feddis08.world.items.Food;
 import at.feddis08.world.living.Human;
+import at.feddis08.world.living.MainHuman;
 
 import java.util.ArrayList;
 
@@ -187,6 +190,15 @@ public class Entity extends GameObject {
     }
 
     public void handle_win(){
+        ArrayList<Item> drop = this.enemy.get_drops();
+        for (Item i : drop){
+            if (this.inventory.add_item(i)){
+                if (this instanceof Human h){
+                    h.send_message_to_player("Loot drop: " + i.name);
+                }
+            }
+
+        }
         win = false;
         battle_mode = false;
         enemy = null;
@@ -252,5 +264,15 @@ public class Entity extends GameObject {
     }
     public boolean can_punch(){
         return (punch_delayed == punch_delay_ticks);
+    }
+    public void eat(Food f){
+        Item item = this.inventory.find_item_by_id(f.id);
+        if (item instanceof Food f2){
+            this.food = food + f2.saturation;
+            this.inventory.remove_item_by_id(f2.id);
+        }
+    }
+    public ArrayList<Item> get_drops(){
+        return this.inventory.items;
     }
 }

@@ -3,6 +3,7 @@ package at.feddis08.world.living;
 import at.feddis08.Console;
 import at.feddis08.InputParser;
 import at.feddis08.Main;
+import at.feddis08.modules.Item;
 import at.feddis08.world.Room;
 
 import java.io.IOException;
@@ -29,18 +30,35 @@ public class MainHuman extends Human {
             e.printStackTrace();
         }
     }
+    public void draw_inv_screen(){
+
+        Room r = Main.world.get_room_by_gameobject_id(id);
+        Console.log("");
+        Console.log("============================================================");
+        Console.log("       ---Inventory---");
+        Console.log("------------------------------------------------------------");
+        Console.log("   -Size: " + this.inventory.size);
+        Console.log("   -Stored: " + this.inventory.items.size());
+        Console.log("------------------------------------------------------------");
+        Console.log("       --Items--");
+        int index = 0;
+        for (Item i : this.inventory.items){
+            Console.log(index + ": " + i.name);
+        }
+        Console.log("------------------------------------------------------------");
+        Console.log("============================================================");
+        Console.log("");
+        Console.log("");
+    }
     public void draw_info_screen(){
 
         Room r = Main.world.get_room_by_gameobject_id(id);
-
         Console.log("");
         Console.log("============================================================");
         Console.log("       ---Info---");
-        Console.log("");
         Console.log("------------------------------------------------------------");
         Console.log("       --Me/" + name + "--");
         Console.log("------------------------------------------------------------");
-        Console.log("");
         Console.log("   -Health:    " + health + "/" +max_health);
         Console.log("   -Stamina:    " + stamina + "/" + max_stamina);
         Console.log("   -Food:    " + food + "/" + max_food);
@@ -49,6 +67,22 @@ public class MainHuman extends Human {
         Console.log("       --Location--");
         Console.log("   -Room: " + r.name);
         Console.log("   " + r.description);
+        Console.log("------------------------------------------------------------");
+        Console.log("       ---Inventory---");
+        Console.log("------------------------------------------------------------");
+        Console.log("   -Stored: " + this.inventory.items.size());
+        Console.log("------------------------------------------------------------");
+        Console.log("       --Items--");
+        if (inventory.items.size() >= 1)
+            Console.log(0 + ": " + inventory.items.get(0).name);
+        if (inventory.items.size() >= 2)
+            Console.log(1 + ": " + inventory.items.get(1).name);
+        if (inventory.items.size() >= 3)
+            Console.log(2 + ": " + inventory.items.get(2).name);
+        if (inventory.items.size() >= 4)
+            Console.log(3 + ": " + inventory.items.get(3).name);
+        if (inventory.items.size() >= 5)
+            Console.log(4 + ": " + inventory.items.get(4).name);
         Console.log("------------------------------------------------------------");
         Console.log("============================================================");
         Console.log("");

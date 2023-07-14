@@ -22,6 +22,12 @@ public class Human extends Entity {
         this.entity_look_response = "A Player";
         this.entity_looks_at_response = "Normal person called " + name;
 
+        this.health = 750;
+        this.max_health = 750;
+        this.stamina = 330;
+        this.max_stamina = 330;
+        this.food = 1100;
+        this.max_food = 1100;
     }
 
 

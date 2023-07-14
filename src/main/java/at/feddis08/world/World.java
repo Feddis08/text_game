@@ -3,7 +3,7 @@ package at.feddis08.world;
 import at.feddis08.modules.GameObject;
 import at.feddis08.world.entities.Door;
 import at.feddis08.world.entities.Entity;
-import at.feddis08.world.living.Mouse;
+import at.feddis08.world.living.Rat;
 import at.feddis08.world.living.Human;
 
 import java.util.ArrayList;
@@ -43,13 +43,13 @@ public class World {
 
         Room r3 = new Room("Path end", "There ends the small Path. I can go back.");
         r3.add_object(door2);
-        Mouse m = new Mouse("Rat", 0);
+        Rat m = new Rat("Rat", 0);
         r3.add_object(m);
         this.rooms.add(r3);
 
         Room r4 = new Room("Cave", "Pass the entry of the forest cave. It's really dark and it's hard to see anything. The cave looks deep. Also you can hear something.");
         r4.add_object(door3);
-        Mouse m2 = new Mouse("Rat", 0);
+        Rat m2 = new Rat("Rat", 0);
         r4.add_object(m);
         this.rooms.add(r4);
 
